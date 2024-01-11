@@ -119,6 +119,54 @@ Another calculated column was created combining Stores[Country Region], and Stor
 Geography Hierarchy 
 ![Goegraphy Hierarchy]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20172047.png")
 
+### Setup Report
+This step was quick but needed for the later steps. Inn the report view 4 separate pages were made:
+1. Executive Summary
+2. Customer Detail
+3. Product Detail
+4. Stores Map
+
+Navigation bars were also added to each of the pages to later be worked on.
+
+### Building Customer Detail Page 
+**Card visuals**
+Added a Unique Customers Card visual
+--> Using the [Total Customers] measure created earlier and renaming Unique Customers
+
+Addedd a Revenue per Customer Card visual
+--> Created a new measure in Measures Table: Revenue per Customer = [Total Revenue]/[Total Customers]. Then added this to a card visual
+
+**Summary Charts**
+Added a Donut Chart visual showing the total customers for each country
+--> Used the Users[Country] column to filter the [Total Customers] measure.
+
+Add a Column Chart visual showing the number of customers who purchased each product category
+--> Used the Products[Category] column to filter the [Total Customers] measure.
+
+**Line Chart**
+Add a Line Chart visual to the top of the page
+--> It shows [Total Customers] on the Y axis, and uses the Date Hierarchy we created previously for the X axis. Allow users to drill down to the month level and not any further.
+*Added a trend line, and a forecast for the next 10 periods with a 95% confidence interval*
+
+**Top 20 Customer Table**
+Created a new table which displays the top 20 customers filtered by revenue. 
+--> The table shows show each customer's full name, revenue, and number of orders.
+*Also added conditional formatting to the revenue column, to display data bars for the revenue values and coloured them to an appropriate transparency.*
+
+**Top Customer Visual Cards**
+Created 3 Customer visual cards 
+--> Top Customer
+--> Top Customers Revenue
+--> Top Customers Order count 
+These were all formatted by filtering out the top revenue from the name list and then applying the column needed to produce the correct result after.
+
+**Date Slicer**
+Added a date slicer
+--> Used a between slicer style on the report page so are able to change years.
+
+![Customer Detail page]("C:\Users\Ellie\Pictures\Screenshots\Screenshot20%2024-01-1120%231608.png")
+
+
 
 ## File Structure 
 README.md 
