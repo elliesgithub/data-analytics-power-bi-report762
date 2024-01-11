@@ -62,27 +62,27 @@ Download a provided Customers.zip file and unzip it to the local machine.
 
 ### Creating the Data Model
 **1. Created Date Table**
-![Creating Date Table]("C:\Users\Ellie\Pictures\Screenshots\Screenshot 2024-01-11 163602.png")
+![Creating Date Table]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20163602.png")
 Firstly, a dates table was created with above DAX formula.
 
 Below are the columns added with some examples of the DAX formulas used:
 - Day of Week
-![Day of week]("C:\Users\Ellie\Pictures\Screenshots\Screenshot 2024-01-11 165038.png")
+![Day of week]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20165038.png")
 - Month Number (i.e. Jan = 1, Dec = 12 etc.)
-![Month Number]("C:\Users\Ellie\Pictures\Screenshots\Screenshot 2024-01-11 165155.png")
+![Month Number]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20165155.png")
 - Month Name
-![Month Name]("C:\Users\Ellie\Pictures\Screenshots\Screenshot 2024-01-11 165242.png")
+![Month Name]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20165242.png")
 - Quarter
-![Quarter]("C:\Users\Ellie\Pictures\Screenshots\Screenshot 2024-01-11 165311.png")
+![Quarter]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20165311.png")
 - Year
-![Year]("C:\Users\Ellie\Pictures\Screenshots\Screenshot 2024-01-11 165331.png")
+![Year]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20165331.png")
 - Start of Year
-![Start of year]("C:\Users\Ellie\Pictures\Screenshots\Screenshot 2024-01-11 164754.png")
+![Start of year]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20164754.png")
 *same formatting for start of Quarter and Month*
 - Start of Quarter
 - Start of Month
 - Start of Week
-![Start of week]("C:\Users\Ellie\Pictures\Screenshots\Screenshot 2024-01-11 164839.png")
+![Start of week]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20164839.png")
 
 Each of these columns were added with DAX formulas.
 
@@ -94,7 +94,7 @@ Next, the Star Schema Data Model was produced. Relationships were created betwee
 - Orders[Order Date] to Date[date]
 - Orders[Shipping Date] to Date[date]
 
-![Star Schema]("C:\Users\Ellie\Pictures\Screenshots\Screenshot 2024-01-11 165547.png")
+![Star Schema]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20165547.png")
 
 **3. Create Measures table and Create Key Measures**
 A measures table was made to manage the measures yet to be created. The table was made in Model view using the Power Query Editor. The measures were then created:
@@ -108,16 +108,16 @@ A measures table was made to manage the measures yet to be created. The table wa
 
 **4. Create Date and Geography Hierarchies**
 Date Hierarchy
-![Date Hierarchy]("C:\Users\Ellie\Pictures\Screenshots\Screenshot 2024-01-11 171228.png")
+![Date Hierarchy]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20171228.png")
 
 A new column was created which creates a full country name for the United States, United Kingdom and Germany from the [Country Code] column.
-![Country Column]("C:\Users\Ellie\Pictures\Screenshots\Screenshot 2024-01-11 171331.png")
+![Country Column]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20171331.png")
 
 Another calculated column was created combining Stores[Country Region], and Stores[Country] columns, separated by a comma and a space.
-![Geography Column]("C:\Users\Ellie\Pictures\Screenshots\Screenshot 2024-01-11 171824.png")
+![Geography Column]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20171824.png")
 
 Geography Hierarchy 
-![Goegraphy Hierarchy]("C:\Users\Ellie\Pictures\Screenshots\Screenshot 2024-01-11 172047.png")
+![Goegraphy Hierarchy]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20172047.png")
 
 
 ## File Structure 
