@@ -187,10 +187,33 @@ Built a clustered bar chart showing orders by product category.
 
 ## 6. Creating Product Detail Page 
 1. **GAUGE VISUALS**
+- Defined DAX measures for (Current Quarter: Orders,Revenue, Profit) and (Targets if 10% quarter on quarter growth for all three)
+- Three gauge filters created with maximum value of gauge set to the Target measure.
+- Conditional formatting applied for the callout value to change colour dependent on if target met. 
+*INSERT SCREENSHOT HERE - CURRENTLY NOT WORKING AS A CONDITIONAL FORMATTING TOOL*
+
 2. **AREA CHART OF REVENUE BY PRODUCT CATEGORY**
+Area chart added with X-axis as Dates[Start of Quarter],Y-axis as Total revenue  and legend as Products categories.
+
 3. **TOP PRODUCTS TABLE**
+Top 10 products table added including: Product Description, Total Revenue, Total Customers,Total Orders, Profit per Order. 
+- This was filtered by setting the Top N type as 10 based on revenue.
+
 4. **SCATTER GRAPH OF QUANTITY SOLD VS PROFIT PER ITEM**
+- New calculated column formed called [Profit per Item] in products table using DAX formula: Profit per Item = 'Products'[Sale Price] - 'Products'[Cost Price].
+- Scatter chart formed including: Values as Products[Description],X-Axis as Prodcuts[Profit per Item], Y-Axis as Products[Total Quantity] and Legend as Products[Category]
+
 5. **CREATE A SLICER TOOLBAR**
+- Custom icons were preciously downloaded to be used for button icons. For this page a filter icon was inserted. 
+- A blank button was inserted with tooltip text set to Open Slicer Panel as a direction instruction for users clicking on the button when functional.
+- A larger rectangle shape than the normal navigation was made by copying the navigation bar and exapnding its width to an appropriate amount which would fit the slicers in.
+- Two slicers were made one for Products[Category] and the other for Stores[Country].
+For the product category slicer multiple items are able to be selcted but for country only one or a slect all option. 
+- Next, a back button was inserted and was positioned in the toolbar at the top to be easily seen when the toolbar is opened.
+- The bookmarks pane was then utilised. Two bookmarks were added one named 'Slicer Bar Closed' and the other 'Slicer Bar Opened'. The Slicer Bar Closed bookmark had the newly created toolbar hidden and both had the data option unchecked to prevent the bookmakr selections affecting the slicer state when toolbar closed. 
+
+*INSERT PAGE SCREENSHOT*
+
 
 ## 7. Creating Store Map Page
 1. **MAP VISUALS**
