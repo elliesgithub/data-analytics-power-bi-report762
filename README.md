@@ -215,11 +215,23 @@ For the product category slicer multiple items are able to be selcted but for co
 *INSERT PAGE SCREENSHOT*
 
 
-## 7. Creating Store Map Page
+## 7. Creating Store Map Page (and drillthrough pages)
 1. **MAP VISUALS**
+A map visual was added taking up most of the page real estate with room for a slicer to be placed in the forthcoming steps. Within the visuals setting the map controls were set to Auto-zoom:On,Zoom buttons:Off,Lasso button:Off. None of these settings needed to be changed.
+- The Goegraphy hierarchy was assigned to the Location and the PROFITYTD measure to the bubble size field.
+
 2. **COUNTRY SLICER**
+A slicer waas added above the map set to Stores[Country] with a few of the settings changed e.g. Multi Select with Ctrl/Cmd and allowing for a select all option.
+
 3. **STORES DRILLTHROUGH PAGE**
+From the store map page it is useful to be able to check an individuals stor progress so a drillthrough page is able to provid a more detailed look at these. 
+- A Stores Drillthrough page was made with page type set as drillthrough and a drillthrough when to 'used as category'. Then,set Drill through from to the country region.
+- On the drill through pages many visuals as seen on other pages were added but specific to the store picked on the stores map page. 
+- The visuals include: Top 5 product table, Total orders column chart, Gauges for Profit YTD compared to a 20% growth target and a card visual showing the selcted store.
+
 4. **STORES TOOLTIPS PAGE**
+A separate page was created so when hovering over stores on the map page you are able to view the proift ytd gauge visual. The page was updated to the size of the visual and then on the map was set to the tooltip page.
+
 
 ## 8.CROSS-FILTERING AND NAVIGATION
 1. **FIX CROSS FILTERING**
