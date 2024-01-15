@@ -28,8 +28,8 @@ git clone https://github.com/elliesgithub/data-analytics-power-bi-report762.git
 ## Usage Instructions
 
 
-### Importing Data into Power BI 
-
+## 1. Importing Data into Power BI 
+ 
 > [!NOTE]
 > The computer being used for this project is a mac which does not support the use of PowerBI desktop. In this case a Azure Virtual Machine was setup to run windows as the dedicated environment to run Power BI. The virtual machine was provisioned and connected to from the local machine. As a mac user you can then connect to the Azure windows VM using the Remote Desktop Protocol. In this case, Microsoft Remote Desktop was used to establish the connection and installed Power BI desktop for windows.**To upload documentation for each step of the project I downloaded VScode on the VM but this could also be pushed using git bash in the terminal**
 
@@ -60,7 +60,7 @@ Download a provided Customers.zip file and unzip it to the local machine.
 - A [full name] column was then added by combining the first and last  name columns in the table.
 
 
-### Creating the Data Model
+## 2. Creating the Data Model
 **1. Created Date Table**
 ![Creating Date Table]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20163602.png")
 Firstly, a dates table was created with above DAX formula.
@@ -119,7 +119,7 @@ Another calculated column was created combining Stores[Country Region], and Stor
 Geography Hierarchy 
 ![Goegraphy Hierarchy]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20172047.png")
 
-### Setup Report
+## 3. Setup Report
 This step was quick but needed for the later steps. Inn the report view 4 separate pages were made:
 1. Executive Summary
 2. Customer Detail
@@ -128,48 +128,83 @@ This step was quick but needed for the later steps. Inn the report view 4 separa
 
 Navigation bars were also added to each of the pages to later be worked on.
 
-### Building Customer Detail Page 
-**Card visuals**
-Added a Unique Customers Card visual
+## 4.Creating Customer Detail Page 
+1. **CARD VISUALS** - Added a Unique Customers Card visual
+
 --> Using the [Total Customers] measure created earlier and renaming Unique Customers
 
-Addedd a Revenue per Customer Card visual
+Added a Revenue per Customer Card visual
+
 --> Created a new measure in Measures Table: Revenue per Customer = [Total Revenue]/[Total Customers]. Then added this to a card visual
 
-**Summary Charts**
-Added a Donut Chart visual showing the total customers for each country
+2. **SUMMARY CHARTS** - Added a Donut Chart visual showing the total customers for each country.  
 --> Used the Users[Country] column to filter the [Total Customers] measure.
 
-Add a Column Chart visual showing the number of customers who purchased each product category
+Add a Column Chart visual showing the number of customers who purchased each product category.     
 --> Used the Products[Category] column to filter the [Total Customers] measure.
 
-**Line Chart**
-Add a Line Chart visual to the top of the page
+3. **LINE CHART** - Added a Line Chart visual to the top of the page.  
 --> It shows [Total Customers] on the Y axis, and uses the Date Hierarchy we created previously for the X axis. Allow users to drill down to the month level and not any further.
 *Added a trend line, and a forecast for the next 10 periods with a 95% confidence interval*
 
-**Top 20 Customer Table**
-Created a new table which displays the top 20 customers filtered by revenue. 
---> The table shows show each customer's full name, revenue, and number of orders.
+4. **TOP 20 CUSTOMER TABLE** - Created a new table which displays the top 20 customers filtered by revenue.  
+-->The table shows show each customer's full name, revenue, and number of orders.  
 *Also added conditional formatting to the revenue column, to display data bars for the revenue values and coloured them to an appropriate transparency.*
 
-**Top Customer Visual Cards**
-Created 3 Customer visual cards 
---> Top Customer
---> Top Customers Revenue
---> Top Customers Order count 
+5. **TOP CUSTOMER VISUAL CARDS** - Created 3 Customer visual cards.   
+- Top Customer  
+- Top Customers Revenue   
+- Top Customers Order count   
 These were all formatted by filtering out the top revenue from the name list and then applying the column needed to produce the correct result after.
 
-**Date Slicer**
-Added a date slicer
+6. **DATE SLICER** - Added a date slicer.  
 --> Used a between slicer style on the report page so are able to change years.
 
 ![Customer Detail page]("C:\Users\Ellie\Pictures\Screenshots\Screenshot20%2024-01-1120%231608.png")
 
 
 
+## 5. Creating Executive Summary Page 
+1. **CARD VISUALS**
+Created three card visuals for Total Revenue, Total Orders and Total Profit measures.
+
+2. **REVENUE TRENDING LINE**
+Inserted a revenue trending line with forecast as in the previous customer detail page with X-axis as Date Hierarchy and Y-axis as Total Revenue.
+
+3. **DONUT CHARTS FOR REVENUE BY COUNTRY AND STORE TYPE**
+Added a pair of donut charts showing Total Revenue of Store Country and Story Type.
+
+4. **BAR CHART OF ORDERS BY PRODUCT CATEGORY**
+Built a clustered bar chart showing orders by product category. 
+
+5. **KPI VISUALS**
+- Created new measures (Previous Quarter: Profit, Revenue & Orders) and (Targets of 5% Growth: Profit, Revenue & Orders)
+- Added KPI visuals with value = Total Revenue, Trend Axis = Start of Quarter, Target = Target Revenue 
+- To format the KPI visuals in the format pane the direction was set to high is good, bad colour red and transparency at 15% as well as callout value only showing 1 decimal place instead of auto.
+
+*INSERTED PICTURE OF PAGE*
+
+
+## 6. Creating Product Detail Page 
+1. **GAUGE VISUALS**
+2. **AREA CHART OF REVENUE BY PRODUCT CATEGORY**
+3. **TOP PRODUCTS TABLE**
+4. **SCATTER GRAPH OF QUANTITY SOLD VS PROFIT PER ITEM**
+5. **CREATE A SLICER TOOLBAR**
+
+## 7. Creating Store Map Page
+1. **MAP VISUALS**
+2. **COUNTRY SLICER**
+3. **STORES DRILLTHROUGH PAGE**
+4. **STORES TOOLTIPS PAGE**
+
+## 8.CROSS-FILTERING AND NAVIGATION
+1. **FIX CROSS FILTERING**
+2. **FINISH NAVIGATION BAR**
+
+
 ## File Structure 
-README.md 
-Power_BI_Report.pbix
+- README.md 
+- Power_BI_Report.pbix
 
 ## License
