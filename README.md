@@ -234,9 +234,17 @@ A separate page was created so when hovering over stores on the map page you are
 
 
 ## 8.CROSS-FILTERING AND NAVIGATION
+At present there is some problems with cross-filtering regarding different visuals.This is fixed in the using the Edit interactions in the view section of Power BI.
 1. **FIX CROSS FILTERING**
-2. **FINISH NAVIGATION BAR**
+Executive Summary Page- product category and top 10 Products were changed to not filter the card visuals or KPI's. The visuals were selcted and then the card visuals and KPI's were selected as none instead of cross-filter.   
+Customer Detail Page- Top 20 customers set to not filter other visuals. The Donut Chart was set to not affect the line graph and the bar chart not to affecr the donut chart.   
+Product Detail Page- The scatter graph and Top 10 products no longer affects any other visuals.
 
+2. **FINISH NAVIGATION BAR**
+Buttons were added to the navigation bar to be able to travel to differnt pages using the navigation bar buttons. 
+- 4 blank buttons were added and the custom icons already downloaded were used as a visual representation of each page. 
+- The button style was set to on hover and action format as page navigation. Each of the buttons have a corresponding page e.g. world globe is the stores map.
+- The icons were then copied across each page adapting the icon which links to it's own page each time.
 
 ## File Structure 
 - README.md 
