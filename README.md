@@ -1,11 +1,20 @@
-# Data Analytics Power BI Report
+# <ins>Data Analytics Power BI Report</ins>
 
 This is a project for AiCore which involves a number of different tasks using PowerBI.
 
 ## Contents 
 1. Description
 2. Installation Instructions
-3. Usage Instructions
+3. Project tasks 
+   - Importing Data into Power BI
+   - Creating the Data Model
+   - Setup Report
+   - Creating Customer Detail Page
+   - Creating Executive Summary Page
+   - Creating Product Detail Page
+   - Creating Stores Map Page (and drillthrough pages)
+   - Cross-Filtering and Navigation
+   - Creating Metrics for Users Outside the Company Using SQL
 4. File Structure 
 5. License
 
@@ -16,19 +25,15 @@ Project objective:
 Recognizing the value of this data, they aim to transform it into actionable insights for better decision-making. Your goal is to ****use Microsoft Power BI to design a comprehensive Quarterly report. This will involve extracting and transforming data from various origins, designing a robust data model rooted in a star-based schema, and then constructing a multi-page report.**
 The report will present a high-level business summary tailored for C-suite executives, and also give insights into their highest value customers segmented by sales region, provide a detailed analysis of top-performing products categorised by type against their sales targets, and a visually appealing map visual that spotlights the performance metrics of their retail outlets across different territories."
 
-
-
 ## Installation Instructions 
 Clone the repository into a terminal using the below command:
 ```
 git clone https://github.com/elliesgithub/data-analytics-power-bi-report762.git
 ```
 
+## Project Tasks
 
-## Usage Instructions
-
-
-## 1. Importing Data into Power BI 
+## Importing Data into Power BI 
  
 > [!NOTE]
 > The computer being used for this project is a mac which does not support the use of PowerBI desktop. In this case a Azure Virtual Machine was setup to run windows as the dedicated environment to run Power BI. The virtual machine was provisioned and connected to from the local machine. As a mac user you can then connect to the Azure windows VM using the Remote Desktop Protocol. In this case, Microsoft Remote Desktop was used to establish the connection and installed Power BI desktop for windows.**To upload documentation for each step of the project I downloaded VScode on the VM but this could also be pushed using git bash in the terminal**
@@ -60,7 +65,7 @@ Download a provided Customers.zip file and unzip it to the local machine.
 - A [full name] column was then added by combining the first and last  name columns in the table.
 
 
-## 2. Creating the Data Model
+## Creating the Data Model
 **1. Created Date Table**
 ![Creating Date Table]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20163602.png")
 Firstly, a dates table was created with above DAX formula.
@@ -119,8 +124,8 @@ Another calculated column was created combining Stores[Country Region], and Stor
 Geography Hierarchy 
 ![Goegraphy Hierarchy]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20172047.png")
 
-## 3. Setup Report
-This step was quick but needed for the later steps. Inn the report view 4 separate pages were made:
+## Setup Report
+This step was quick but needed for the later steps. In the report view 4 separate pages were made:
 1. Executive Summary
 2. Customer Detail
 3. Product Detail
@@ -128,27 +133,26 @@ This step was quick but needed for the later steps. Inn the report view 4 separa
 
 Navigation bars were also added to each of the pages to later be worked on.
 
-## 4.Creating Customer Detail Page 
+## Creating Customer Detail Page 
 1. **CARD VISUALS** - Added a Unique Customers Card visual
 
---> Using the [Total Customers] measure created earlier and renaming Unique Customers
+- Using the [Total Customers] measure created earlier and renaming Unique Customers
 
-Added a Revenue per Customer Card visual
+- Added a Revenue per Customer Card visual
 
---> Created a new measure in Measures Table: Revenue per Customer = [Total Revenue]/[Total Customers]. Then added this to a card visual
+- Created a new measure in Measures Table: Revenue per Customer = [Total Revenue]/[Total Customers]. Then added this to a card visual
 
 2. **SUMMARY CHARTS** - Added a Donut Chart visual showing the total customers for each country.  
---> Used the Users[Country] column to filter the [Total Customers] measure.
-
-Add a Column Chart visual showing the number of customers who purchased each product category.     
---> Used the Products[Category] column to filter the [Total Customers] measure.
+-  Used the Users[Country] column to filter the [Total Customers] measure.
+- Add a Column Chart visual showing the number of customers who purchased each product category.     
+- Used the Products[Category] column to filter the [Total Customers] measure.
 
 3. **LINE CHART** - Added a Line Chart visual to the top of the page.  
---> It shows [Total Customers] on the Y axis, and uses the Date Hierarchy we created previously for the X axis. Allow users to drill down to the month level and not any further.
+- It shows [Total Customers] on the Y axis, and uses the Date Hierarchy we created previously for the X axis. Allow users to drill down to the month level and not any further.
 *Added a trend line, and a forecast for the next 10 periods with a 95% confidence interval*
 
 4. **TOP 20 CUSTOMER TABLE** - Created a new table which displays the top 20 customers filtered by revenue.  
--->The table shows show each customer's full name, revenue, and number of orders.  
+- The table shows show each customer's full name, revenue, and number of orders.     
 *Also added conditional formatting to the revenue column, to display data bars for the revenue values and coloured them to an appropriate transparency.*
 
 5. **TOP CUSTOMER VISUAL CARDS** - Created 3 Customer visual cards.   
@@ -158,13 +162,13 @@ Add a Column Chart visual showing the number of customers who purchased each pro
 These were all formatted by filtering out the top revenue from the name list and then applying the column needed to produce the correct result after.
 
 6. **DATE SLICER** - Added a date slicer.  
---> Used a between slicer style on the report page so are able to change years.
+- Used a between slicer style on the report page so are able to change years.
 
 ![Customer Detail page]("C:\Users\Ellie\Pictures\Screenshots\Screenshot20%2024-01-1120%231608.png")
 
 
 
-## 5. Creating Executive Summary Page 
+## Creating Executive Summary Page 
 1. **CARD VISUALS**
 Created three card visuals for Total Revenue, Total Orders and Total Profit measures.
 
@@ -185,21 +189,21 @@ Built a clustered bar chart showing orders by product category.
 *INSERTED PICTURE OF PAGE*
 
 
-## 6. Creating Product Detail Page 
+## Creating Product Detail Page 
 1. **GAUGE VISUALS**
 - Defined DAX measures for (Current Quarter: Orders,Revenue, Profit) and (Targets if 10% quarter on quarter growth for all three)
 - Three gauge filters created with maximum value of gauge set to the Target measure.
 - Conditional formatting applied for the callout value to change colour dependent on if target met. 
 *INSERT SCREENSHOT HERE - CURRENTLY NOT WORKING AS A CONDITIONAL FORMATTING TOOL*
 
-2. **AREA CHART OF REVENUE BY PRODUCT CATEGORY**
+2. **AREA CHART OF REVENUE BY PRODUCT CATEGORY**   
 Area chart added with X-axis as Dates[Start of Quarter],Y-axis as Total revenue  and legend as Products categories.
 
-3. **TOP PRODUCTS TABLE**
+3. **TOP PRODUCTS TABLE**   
 Top 10 products table added including: Product Description, Total Revenue, Total Customers,Total Orders, Profit per Order. 
 - This was filtered by setting the Top N type as 10 based on revenue.
 
-4. **SCATTER GRAPH OF QUANTITY SOLD VS PROFIT PER ITEM**
+4. **SCATTER GRAPH OF QUANTITY SOLD VS PROFIT PER ITEM**  
 - New calculated column formed called [Profit per Item] in products table using DAX formula: Profit per Item = 'Products'[Sale Price] - 'Products'[Cost Price].
 - Scatter chart formed including: Values as Products[Description],X-Axis as Prodcuts[Profit per Item], Y-Axis as Products[Total Quantity] and Legend as Products[Category]
 
@@ -215,39 +219,112 @@ For the product category slicer multiple items are able to be selcted but for co
 *INSERT PAGE SCREENSHOT*
 
 
-## 7. Creating Store Map Page (and drillthrough pages)
-1. **MAP VISUALS**
+## Creating Stores Map Page (and drillthrough pages)
+1. **MAP VISUALS**   
 A map visual was added taking up most of the page real estate with room for a slicer to be placed in the forthcoming steps. Within the visuals setting the map controls were set to Auto-zoom:On,Zoom buttons:Off,Lasso button:Off. None of these settings needed to be changed.
-- The Goegraphy hierarchy was assigned to the Location and the PROFITYTD measure to the bubble size field.
+- The Geography hierarchy was assigned to the Location and the PROFITYTD measure to the bubble size field.
 
-2. **COUNTRY SLICER**
+2. **COUNTRY SLICER**  
 A slicer waas added above the map set to Stores[Country] with a few of the settings changed e.g. Multi Select with Ctrl/Cmd and allowing for a select all option.
 
-3. **STORES DRILLTHROUGH PAGE**
+3. **STORES DRILLTHROUGH PAGE**   
 From the store map page it is useful to be able to check an individuals stor progress so a drillthrough page is able to provid a more detailed look at these. 
 - A Stores Drillthrough page was made with page type set as drillthrough and a drillthrough when to 'used as category'. Then,set Drill through from to the country region.
 - On the drill through pages many visuals as seen on other pages were added but specific to the store picked on the stores map page. 
 - The visuals include: Top 5 product table, Total orders column chart, Gauges for Profit YTD compared to a 20% growth target and a card visual showing the selcted store.
 
-4. **STORES TOOLTIPS PAGE**
+4. **STORES TOOLTIPS PAGE**  
 A separate page was created so when hovering over stores on the map page you are able to view the proift ytd gauge visual. The page was updated to the size of the visual and then on the map was set to the tooltip page.
 
 
-## 8.CROSS-FILTERING AND NAVIGATION
+## Cross-Filtering and Navigation
 At present there is some problems with cross-filtering regarding different visuals.This is fixed in the using the Edit interactions in the view section of Power BI.
-1. **FIX CROSS FILTERING**
+1. **FIX CROSS FILTERING**   
 Executive Summary Page- product category and top 10 Products were changed to not filter the card visuals or KPI's. The visuals were selcted and then the card visuals and KPI's were selected as none instead of cross-filter.   
 Customer Detail Page- Top 20 customers set to not filter other visuals. The Donut Chart was set to not affect the line graph and the bar chart not to affecr the donut chart.   
 Product Detail Page- The scatter graph and Top 10 products no longer affects any other visuals.
 
-2. **FINISH NAVIGATION BAR**
+2. **FINISH NAVIGATION BAR**   
 Buttons were added to the navigation bar to be able to travel to differnt pages using the navigation bar buttons. 
 - 4 blank buttons were added and the custom icons already downloaded were used as a visual representation of each page. 
 - The button style was set to on hover and action format as page navigation. Each of the buttons have a corresponding page e.g. world globe is the stores map.
 - The icons were then copied across each page adapting the icon which links to it's own page each time.
 
+At the end of the POWER BI tasks the Project should have 6 pages:
+
+| Pages | Summaries|
+|--     |--        |
+| Customer Detail    |  Offers insights into customer information and trends.      |        
+| Executive Summary   | Offers insights into targets and revenues of stores.         | 
+| Product Detail    |Offers insights into products and particular categories acros different regions including a toolbar.          |   
+| Stores Map    | Presents a map which has drilldown functioning to access information on different regions.         |   
+| *Stores Drillthrough*    | This page is drillthroughed from the Stores Map page to offer further insight about stores.         |
+| *Tooltip Page*    | This has the Profit YTD gauge which when hovered over areas of Stores Map page appears.         |              
+
+## Creating Metrics for Users Outside the Company Using SQL
+
+1. **CONNECT TO SQL SERVER**   
+
+Using information given in the structure below 
+HOST:   
+PORT: 5432   
+DATABASE:   
+USER:   
+PASSWORD: 
+
+2. **CHECK TABLE AND COLUMN NAMES**   
+Using the POWERBI Projection.session.sql document a list of the tables in the database was printed and the result saved to a csv file for refernece under the SQL Table and Column Names folder.
+
+A list of the columns in the orders table was printed and saved the result to a csv file called orders_columns.csv and was repeated for the the other tables which had useful columns. 
+
+Any tables which did not have useful columns were not saved.
+
+3. **QUERY THE DATABASE**  
+The below questions were answered using SQL Querying:
+
+   1.  How many staff are there in all of the UK stores?
+
+   2. Which month in 2022 has had the highest revenue?
+
+
+   3. Which German store type had the highest revenue for 2022?
+
+   4. Create a view where the rows are the store types and the columns are the total sales, percentage of total sales and the count of orders
+
+   5. Which product category generated the most profit for the "Wiltshire, UK" region in 2021?
+
+These are in the Querying Database Questions folder with both the SQL verion and csv version saved.
+
 ## File Structure 
-- README.md 
-- Power_BI_Report.pbix
+README.md   
+Power_BI_Report.pbix  
+Querying Database Questions/  
+ ┣ question_1.csv  
+ ┣ question_1.sql  
+ ┣ question_2.csv  
+ ┣ question_2.sql  
+ ┣ question_3.csv  
+ ┣ question_3.sql  
+ ┣ question_4.csv  
+ ┣ question_4.sql  
+ ┣ question_5.csv  
+ ┗ question_5.sql  
+SQL Table and Column Names/  
+ ┣ country_region_columns.csv  
+ ┣ database_columns_list.csv  
+ ┣ dim_customer_columns.csv  
+ ┣ dim_date_columns.csv   
+ ┣ dim_product_columns.csv  
+ ┣ dim_store_columns.csv  
+ ┣ forquerying2_columns.csv  
+ ┣ my_store_overviews_2_columns.csv  
+ ┣ my_store_overviews_columns.csv  
+ ┣ new_store_overview_columns.csv  
+ ┣ orders_columns.csv  
+ ┣ PowerBI Project.session.sql  
+ ┗ test_store_overviews_columns.csv  
+
+
 
 ## License
+MIT 
