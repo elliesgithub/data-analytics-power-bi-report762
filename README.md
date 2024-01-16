@@ -1,6 +1,9 @@
 # <ins>Data Analytics Power BI Report</ins>
 
 This is a project for AiCore which involves a number of different tasks using PowerBI.
+<a name="top"/> 
+
+![Power BI image](https://github.com/elliesgithub/data-analytics-power-bi-report762/assets/149676919/551077bf-1faa-4eb4-b116-4a5dbb92e9b1)
 
 ## Contents 
 1. Description
@@ -22,7 +25,7 @@ This is a project for AiCore which involves a number of different tasks using Po
 ## Description
 Project objective: 
 > You have recently been approached by a medium-sized international retailer who is keen on elevating their business intelligence practices. With operations spanning across different regions, **they've accumulated large amounts of sales from disparate sources over the years**.
-Recognizing the value of this data, they aim to transform it into actionable insights for better decision-making. Your goal is to ****use Microsoft Power BI to design a comprehensive Quarterly report. This will involve extracting and transforming data from various origins, designing a robust data model rooted in a star-based schema, and then constructing a multi-page report.**
+Recognizing the value of this data, they aim to transform it into actionable insights for better decision-making. Your goal is to **use Microsoft Power BI to design a comprehensive Quarterly report. This will involve extracting and transforming data from various origins, designing a robust data model rooted in a star-based schema, and then constructing a multi-page report.**
 The report will present a high-level business summary tailored for C-suite executives, and also give insights into their highest value customers segmented by sales region, provide a detailed analysis of top-performing products categorised by type against their sales targets, and a visually appealing map visual that spotlights the performance metrics of their retail outlets across different territories."
 
 ## Installation Instructions 
@@ -30,8 +33,10 @@ Clone the repository into a terminal using the below command:
 ```
 git clone https://github.com/elliesgithub/data-analytics-power-bi-report762.git
 ```
+The Power_BI_Report.pbix contains the PowerBI Report with the different pages and the files in the Querying Database Questions answer the questions at the end of this README.md file.
 
 ## Project Tasks
+
 
 ## Importing Data into Power BI 
  
@@ -41,11 +46,11 @@ git clone https://github.com/elliesgithub/data-analytics-power-bi-report762.git
 For each of these steps unused columns were removed and column names adjusted to suit Power BI naming conventions.
 
 
-**1. Load and Transform Orders Table (Azure SQL Database connection)**
+**1. Load and Transform Orders Table (Azure SQL Database connection)**   
 Connected to an Azure SQL Database and imported the orders_powerbi table.
 - In this step the column [Card Number] was deleted for data privacy. Shipping and order columns were split into date and time respective columns and null data was filtered out of the [Order Date] column.
 
-**2. Import and Transform Products Table** 
+**2. Import and Transform Products Table**    
 Downloaded a provided Products.csv file to local machine and used the get data function to import into Power BI.
 - Removed duplicates in the [product_code column]
 - Used the weight column to create separate unit and value columns. Used the columns from example function then adjusted the M expression for numbers which weren't accounted for in the first 100 examples of the weight column. 
@@ -53,12 +58,11 @@ Downloaded a provided Products.csv file to local machine and used the get data f
 - The unit column had any blank entries replaced with kg.
 - Finally another column was made which adjusts the values to kg.
 
-
-**3. Import and Transform Stores Table**
+**3. Import and Transform Stores Table**   
 Connect to an Azure Blob Storage using Power BI Get Data function.
 - Nothing was adjusted on this table.
 
-**4. Import and Transform Customers Table**
+**4. Import and Transform Customers Table**   
 Download a provided Customers.zip file and unzip it to the local machine.
 - The folder contained three separate files with the same format containing information about different regions.
 - Used Combine and transform to download the files into the Power BI.
@@ -91,7 +95,7 @@ Below are the columns added with some examples of the DAX formulas used:
 
 Each of these columns were added with DAX formulas.
 
-**2. Built the Star Schema Data Model**
+**2. Built the Star Schema Data Model**   
 Next, the Star Schema Data Model was produced. Relationships were created between these columns in different tables:
 - Orders[product_code] to Products[product_code]
 - Orders[Store Code] to Stores[store code]
@@ -101,7 +105,7 @@ Next, the Star Schema Data Model was produced. Relationships were created betwee
 
 ![Star Schema]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20165547.png")
 
-**3. Create Measures table and Create Key Measures**
+**3. Create Measures table and Create Key Measures**   
 A measures table was made to manage the measures yet to be created. The table was made in Model view using the Power Query Editor. The measures were then created:
 - Total Orders = COUNTROWS(Orders) 
 - Total Revenue = SUMX(Orders, Orders[Product Quantity] * RELATED(Products[Sale Price]))
@@ -111,7 +115,7 @@ A measures table was made to manage the measures yet to be created. The table wa
 - Profit YTD = TOTALYTD([Total Profit], Orders[Order Date])
 - Revenue YTD = TOTALYTD([Total Revenue], Orders[Order Date]) 
 
-**4. Create Date and Geography Hierarchies**
+**4. Create Date and Geography Hierarchies**   
 Date Hierarchy
 ![Date Hierarchy]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20171228.png")
 
@@ -124,7 +128,7 @@ Another calculated column was created combining Stores[Country Region], and Stor
 Geography Hierarchy 
 ![Goegraphy Hierarchy]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20172047.png")
 
-## Setup Report
+## Setup Report   
 This step was quick but needed for the later steps. In the report view 4 separate pages were made:
 1. Executive Summary
 2. Customer Detail
@@ -133,7 +137,7 @@ This step was quick but needed for the later steps. In the report view 4 separat
 
 Navigation bars were also added to each of the pages to later be worked on.
 
-## Creating Customer Detail Page 
+## Creating Customer Detail Page   
 1. **CARD VISUALS** - Added a Unique Customers Card visual
 
 - Using the [Total Customers] measure created earlier and renaming Unique Customers
@@ -168,20 +172,20 @@ These were all formatted by filtering out the top revenue from the name list and
 
 
 
-## Creating Executive Summary Page 
-1. **CARD VISUALS**
+## Creating Executive Summary Page   
+1. **CARD VISUALS**   
 Created three card visuals for Total Revenue, Total Orders and Total Profit measures.
 
-2. **REVENUE TRENDING LINE**
+2. **REVENUE TRENDING LINE**   
 Inserted a revenue trending line with forecast as in the previous customer detail page with X-axis as Date Hierarchy and Y-axis as Total Revenue.
 
-3. **DONUT CHARTS FOR REVENUE BY COUNTRY AND STORE TYPE**
+3. **DONUT CHARTS FOR REVENUE BY COUNTRY AND STORE TYPE**  
 Added a pair of donut charts showing Total Revenue of Store Country and Story Type.
 
-4. **BAR CHART OF ORDERS BY PRODUCT CATEGORY**
+4. **BAR CHART OF ORDERS BY PRODUCT CATEGORY**   
 Built a clustered bar chart showing orders by product category. 
 
-5. **KPI VISUALS**
+5. **KPI VISUALS**   
 - Created new measures (Previous Quarter: Profit, Revenue & Orders) and (Targets of 5% Growth: Profit, Revenue & Orders)
 - Added KPI visuals with value = Total Revenue, Trend Axis = Start of Quarter, Target = Target Revenue 
 - To format the KPI visuals in the format pane the direction was set to high is good, bad colour red and transparency at 15% as well as callout value only showing 1 decimal place instead of auto.
@@ -189,25 +193,25 @@ Built a clustered bar chart showing orders by product category.
 *INSERTED PICTURE OF PAGE*
 
 
-## Creating Product Detail Page 
-1. **GAUGE VISUALS**
+## Creating Product Detail Page   
+1. **GAUGE VISUALS**   
 - Defined DAX measures for (Current Quarter: Orders,Revenue, Profit) and (Targets if 10% quarter on quarter growth for all three)
 - Three gauge filters created with maximum value of gauge set to the Target measure.
 - Conditional formatting applied for the callout value to change colour dependent on if target met. 
 *INSERT SCREENSHOT HERE - CURRENTLY NOT WORKING AS A CONDITIONAL FORMATTING TOOL*
 
-2. **AREA CHART OF REVENUE BY PRODUCT CATEGORY**   
+2. **AREA CHART OF REVENUE BY PRODUCT CATEGORY**    
 Area chart added with X-axis as Dates[Start of Quarter],Y-axis as Total revenue  and legend as Products categories.
 
-3. **TOP PRODUCTS TABLE**   
+3. **TOP PRODUCTS TABLE**     
 Top 10 products table added including: Product Description, Total Revenue, Total Customers,Total Orders, Profit per Order. 
 - This was filtered by setting the Top N type as 10 based on revenue.
 
-4. **SCATTER GRAPH OF QUANTITY SOLD VS PROFIT PER ITEM**  
+4. **SCATTER GRAPH OF QUANTITY SOLD VS PROFIT PER ITEM**    
 - New calculated column formed called [Profit per Item] in products table using DAX formula: Profit per Item = 'Products'[Sale Price] - 'Products'[Cost Price].
 - Scatter chart formed including: Values as Products[Description],X-Axis as Prodcuts[Profit per Item], Y-Axis as Products[Total Quantity] and Legend as Products[Category]
 
-5. **CREATE A SLICER TOOLBAR**
+5. **CREATE A SLICER TOOLBAR**   
 - Custom icons were preciously downloaded to be used for button icons. For this page a filter icon was inserted. 
 - A blank button was inserted with tooltip text set to Open Slicer Panel as a direction instruction for users clicking on the button when functional.
 - A larger rectangle shape than the normal navigation was made by copying the navigation bar and exapnding its width to an appropriate amount which would fit the slicers in.
@@ -219,12 +223,12 @@ For the product category slicer multiple items are able to be selcted but for co
 *INSERT PAGE SCREENSHOT*
 
 
-## Creating Stores Map Page (and drillthrough pages)
-1. **MAP VISUALS**   
+## Creating Stores Map Page (and drillthrough pages)   
+1. **MAP VISUALS**     
 A map visual was added taking up most of the page real estate with room for a slicer to be placed in the forthcoming steps. Within the visuals setting the map controls were set to Auto-zoom:On,Zoom buttons:Off,Lasso button:Off. None of these settings needed to be changed.
 - The Geography hierarchy was assigned to the Location and the PROFITYTD measure to the bubble size field.
 
-2. **COUNTRY SLICER**  
+2. **COUNTRY SLICER**   
 A slicer waas added above the map set to Stores[Country] with a few of the settings changed e.g. Multi Select with Ctrl/Cmd and allowing for a select all option.
 
 3. **STORES DRILLTHROUGH PAGE**   
@@ -237,14 +241,14 @@ From the store map page it is useful to be able to check an individuals stor pro
 A separate page was created so when hovering over stores on the map page you are able to view the proift ytd gauge visual. The page was updated to the size of the visual and then on the map was set to the tooltip page.
 
 
-## Cross-Filtering and Navigation
+## Cross-Filtering and Navigation   
 At present there is some problems with cross-filtering regarding different visuals.This is fixed in the using the Edit interactions in the view section of Power BI.
-1. **FIX CROSS FILTERING**   
+1. **FIX CROSS FILTERING**      
 Executive Summary Page- product category and top 10 Products were changed to not filter the card visuals or KPI's. The visuals were selcted and then the card visuals and KPI's were selected as none instead of cross-filter.   
 Customer Detail Page- Top 20 customers set to not filter other visuals. The Donut Chart was set to not affect the line graph and the bar chart not to affecr the donut chart.   
 Product Detail Page- The scatter graph and Top 10 products no longer affects any other visuals.
 
-2. **FINISH NAVIGATION BAR**   
+2. **FINISH NAVIGATION BAR**    
 Buttons were added to the navigation bar to be able to travel to differnt pages using the navigation bar buttons. 
 - 4 blank buttons were added and the custom icons already downloaded were used as a visual representation of each page. 
 - The button style was set to on hover and action format as page navigation. Each of the buttons have a corresponding page e.g. world globe is the stores map.
@@ -264,16 +268,15 @@ At the end of the POWER BI tasks the Project should have 6 pages:
 ## Creating Metrics for Users Outside the Company Using SQL
 
 1. **CONNECT TO SQL SERVER**   
+Using information given in the structure below connected to a SQL server from VScode. Have not provided the details out of privacy.
+HOST: Given host   
+PORT: Given port    
+DATABASE: Given database    
+USER: Given user  
+PASSWORD: Given password  
 
-Using information given in the structure below 
-HOST:   
-PORT: 5432   
-DATABASE:   
-USER:   
-PASSWORD: 
-
-2. **CHECK TABLE AND COLUMN NAMES**   
-Using the POWERBI Projection.session.sql document a list of the tables in the database was printed and the result saved to a csv file for refernece under the SQL Table and Column Names folder.
+2. **CHECK TABLE AND COLUMN NAMES**      
+Using the 'POWERBI Projection.session.sql' document a list of the tables in the database was printed and the result saved to a csv file for reference under the SQL Table and Column Names folder.
 
 A list of the columns in the orders table was printed and saved the result to a csv file called orders_columns.csv and was repeated for the the other tables which had useful columns. 
 
@@ -286,7 +289,6 @@ The below questions were answered using SQL Querying:
 
    2. Which month in 2022 has had the highest revenue?
 
-
    3. Which German store type had the highest revenue for 2022?
 
    4. Create a view where the rows are the store types and the columns are the total sales, percentage of total sales and the count of orders
@@ -298,6 +300,7 @@ These are in the Querying Database Questions folder with both the SQL verion and
 ## File Structure 
 README.md   
 Power_BI_Report.pbix  
+LICENSE.txt   
 Querying Database Questions/  
  ┣ question_1.csv  
  ┣ question_1.sql  
@@ -324,7 +327,7 @@ SQL Table and Column Names/
  ┣ PowerBI Project.session.sql  
  ┗ test_store_overviews_columns.csv  
 
-
-
 ## License
 MIT 
+
+[Back to top](#top)
