@@ -71,27 +71,19 @@ Download a provided Customers.zip file and unzip it to the local machine.
 
 ## Creating the Data Model
 **1. Created Date Table**
-![Creating Date Table]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20163602.png")
 Firstly, a dates table was created with above DAX formula.
 
 Below are the columns added with some examples of the DAX formulas used:
 - Day of Week
-![Day of week]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20165038.png")
 - Month Number (i.e. Jan = 1, Dec = 12 etc.)
-![Month Number]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20165155.png")
 - Month Name
-![Month Name]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20165242.png")
 - Quarter
-![Quarter]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20165311.png")
 - Year
-![Year]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20165331.png")
 - Start of Year
-![Start of year]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20164754.png")
 *same formatting for start of Quarter and Month*
 - Start of Quarter
 - Start of Month
 - Start of Week
-![Start of week]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20164839.png")
 
 Each of these columns were added with DAX formulas.
 
@@ -103,7 +95,8 @@ Next, the Star Schema Data Model was produced. Relationships were created betwee
 - Orders[Order Date] to Date[date]
 - Orders[Shipping Date] to Date[date]
 
-![Star Schema]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20165547.png")
+![image](https://github.com/elliesgithub/data-analytics-power-bi-report762/assets/149676919/84965980-7535-4b6f-a896-3f149096eba8)
+
 
 **3. Create Measures table and Create Key Measures**   
 A measures table was made to manage the measures yet to be created. The table was made in Model view using the Power Query Editor. The measures were then created:
@@ -116,17 +109,14 @@ A measures table was made to manage the measures yet to be created. The table wa
 - Revenue YTD = TOTALYTD([Total Revenue], Orders[Order Date]) 
 
 **4. Create Date and Geography Hierarchies**   
-Date Hierarchy
-![Date Hierarchy]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20171228.png")
+- Date Hierarchy was set up.
 
-A new column was created which creates a full country name for the United States, United Kingdom and Germany from the [Country Code] column.
-![Country Column]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20171331.png")
+- A new column was created which creates a full country name for the United States, United Kingdom and Germany from the [Country Code] column.
 
-Another calculated column was created combining Stores[Country Region], and Stores[Country] columns, separated by a comma and a space.
-![Geography Column]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20171824.png")
+- Another calculated column was created combining Stores[Country Region], and Stores[Country] columns, separated by a comma and a space.
 
-Geography Hierarchy 
-![Goegraphy Hierarchy]("C:\Users\Ellie\Pictures\Screenshots\Screenshot%202024-01-11%20172047.png")
+- Geography Hierarchy was set up.
+
 
 ## Setup Report   
 This step was quick but needed for the later steps. In the report view 4 separate pages were made:
@@ -168,8 +158,8 @@ These were all formatted by filtering out the top revenue from the name list and
 6. **DATE SLICER** - Added a date slicer.  
 - Used a between slicer style on the report page so are able to change years.
 
-![Customer Detail page]("C:\Users\Ellie\Pictures\Screenshots\Screenshot20%2024-01-1120%231608.png")
 
+![image](https://github.com/elliesgithub/data-analytics-power-bi-report762/assets/149676919/2ba9ef9c-1e05-43e6-b084-869beb13e5ab)
 
 
 ## Creating Executive Summary Page   
@@ -190,7 +180,8 @@ Built a clustered bar chart showing orders by product category.
 - Added KPI visuals with value = Total Revenue, Trend Axis = Start of Quarter, Target = Target Revenue 
 - To format the KPI visuals in the format pane the direction was set to high is good, bad colour red and transparency at 15% as well as callout value only showing 1 decimal place instead of auto.
 
-*INSERTED PICTURE OF PAGE*
+![image](https://github.com/elliesgithub/data-analytics-power-bi-report762/assets/149676919/e0e785a6-de30-40f3-a980-3b32688f5d46)
+
 
 
 ## Creating Product Detail Page   
@@ -198,7 +189,6 @@ Built a clustered bar chart showing orders by product category.
 - Defined DAX measures for (Current Quarter: Orders,Revenue, Profit) and (Targets if 10% quarter on quarter growth for all three)
 - Three gauge filters created with maximum value of gauge set to the Target measure.
 - Conditional formatting applied for the callout value to change colour dependent on if target met. 
-*INSERT SCREENSHOT HERE - CURRENTLY NOT WORKING AS A CONDITIONAL FORMATTING TOOL*
 
 2. **AREA CHART OF REVENUE BY PRODUCT CATEGORY**    
 Area chart added with X-axis as Dates[Start of Quarter],Y-axis as Total revenue  and legend as Products categories.
@@ -220,7 +210,10 @@ For the product category slicer multiple items are able to be selcted but for co
 - Next, a back button was inserted and was positioned in the toolbar at the top to be easily seen when the toolbar is opened.
 - The bookmarks pane was then utilised. Two bookmarks were added one named 'Slicer Bar Closed' and the other 'Slicer Bar Opened'. The Slicer Bar Closed bookmark had the newly created toolbar hidden and both had the data option unchecked to prevent the bookmakr selections affecting the slicer state when toolbar closed. 
 
-*INSERT PAGE SCREENSHOT*
+![image](https://github.com/elliesgithub/data-analytics-power-bi-report762/assets/149676919/500d7a65-d20f-4578-92fa-49fb0394462b)
+
+![image](https://github.com/elliesgithub/data-analytics-power-bi-report762/assets/149676919/0d227b66-549c-4291-bf2b-ff30ed21a360)
+
 
 
 ## Creating Stores Map Page (and drillthrough pages)   
@@ -231,14 +224,22 @@ A map visual was added taking up most of the page real estate with room for a sl
 2. **COUNTRY SLICER**   
 A slicer waas added above the map set to Stores[Country] with a few of the settings changed e.g. Multi Select with Ctrl/Cmd and allowing for a select all option.
 
-3. **STORES DRILLTHROUGH PAGE**   
+![image](https://github.com/elliesgithub/data-analytics-power-bi-report762/assets/149676919/260a9f53-6857-4d6c-a27b-4bbbf559af70)
+
+4. **STORES DRILLTHROUGH PAGE**   
 From the store map page it is useful to be able to check an individuals stor progress so a drillthrough page is able to provid a more detailed look at these. 
 - A Stores Drillthrough page was made with page type set as drillthrough and a drillthrough when to 'used as category'. Then,set Drill through from to the country region.
 - On the drill through pages many visuals as seen on other pages were added but specific to the store picked on the stores map page. 
 - The visuals include: Top 5 product table, Total orders column chart, Gauges for Profit YTD compared to a 20% growth target and a card visual showing the selcted store.
 
+![image](https://github.com/elliesgithub/data-analytics-power-bi-report762/assets/149676919/d4f595a4-cdcb-4707-ac05-df82e3ebc8ea)
+
 4. **STORES TOOLTIPS PAGE**  
 A separate page was created so when hovering over stores on the map page you are able to view the proift ytd gauge visual. The page was updated to the size of the visual and then on the map was set to the tooltip page.
+
+
+![image](https://github.com/elliesgithub/data-analytics-power-bi-report762/assets/149676919/c290f262-e337-445d-a587-81e279f711bf)
+
 
 
 ## Cross-Filtering and Navigation   
